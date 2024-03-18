@@ -34,9 +34,9 @@ const config: Config = {
   coverageDirectory: "coverage",
 
   // An array of regexp pattern strings used to skip coverage collection
-  // coveragePathIgnorePatterns: [
-  //   "\\\\node_modules\\\\"
-  // ],
+  coveragePathIgnorePatterns: [
+    "\\\\node_modules\\\\"
+  ],
 
   // Indicates which provider should be used to instrument code for coverage
   coverageProvider: "v8",
@@ -117,7 +117,7 @@ const config: Config = {
   // reporters: undefined,
 
   // Automatically reset mock state before every test
-  // resetMocks: false,
+   resetMocks: true,
 
   // Reset the module registry before running each individual test
   // resetModules: false,
@@ -140,7 +140,7 @@ const config: Config = {
   // runner: "jest-runner",
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
-  // setupFiles: [],
+  setupFiles: ['./jest.polyfills.js'],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
@@ -155,7 +155,9 @@ const config: Config = {
   testEnvironment: "jest-environment-jsdom",
 
   // Options that will be passed to the testEnvironment
-  // testEnvironmentOptions: {},
+  testEnvironmentOptions: {
+    customExportConditions: [''],
+  },
 
   // Adds a location field to test results
   // testLocationInResults: false,
@@ -167,9 +169,9 @@ const config: Config = {
   // ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
-  // testPathIgnorePatterns: [
-  //   "\\\\node_modules\\\\"
-  // ],
+  testPathIgnorePatterns: [
+    "/node_modules/",
+  ],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
   // testRegex: [],

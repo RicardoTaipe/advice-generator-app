@@ -13,7 +13,7 @@ interface AdviceData {
 }
 
 function AdviceGenerator() {
-    const [data, setData] = useState<AdviceData>({
+    const [data, setData] = useState({
         slip: {
             id: 71,
             advice:
@@ -27,7 +27,7 @@ function AdviceGenerator() {
     //animate quote
     useEffect(() => {
         setFadeIn(true);
-        const timeoutId = setTimeout(() => setFadeIn(false), 1000);
+        const timeoutId = setTimeout(() => setFadeIn(false), 800);
         return () => {
             clearTimeout(timeoutId)
         }
@@ -41,11 +41,11 @@ function AdviceGenerator() {
             const response = await fetch(API_URL);
             const result = await response.json();
             if (!response.ok) {
-                throw new Error('Failed to fetch advice');
+                throw new Error('Something went wrong...');
             }
             setData(result);
         } catch (error) {
-            setError("Something went wrong ...");
+            setError("Something went wrong...");
         } finally {
             setLoading(false);
         }
