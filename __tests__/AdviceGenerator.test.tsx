@@ -39,7 +39,7 @@ describe("Advicegenerator", () => {
 
     server.use(
       http.get(API_URL, () => {
-        return HttpResponse.error();
+        return new HttpResponse(null, { status: 500 });
       })
     );
 

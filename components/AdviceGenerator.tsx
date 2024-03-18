@@ -13,7 +13,7 @@ interface AdviceData {
 }
 
 function AdviceGenerator() {
-    const [data, setData] = useState({
+    const [data, setData] = useState<AdviceData>({
         slip: {
             id: 71,
             advice:
@@ -40,9 +40,6 @@ function AdviceGenerator() {
             setLoading(true);
             const response = await fetch(API_URL);
             const result = await response.json();
-            if (!response.ok) {
-                throw new Error('Something went wrong...');
-            }
             setData(result);
         } catch (error) {
             setError("Something went wrong...");
